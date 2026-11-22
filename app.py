@@ -1,4 +1,4 @@
-"""Streamlit interface for the AI Travel Planning Assistant."""
+"""Streamlit interface for Voyagent, the AI travel planning assistant."""
 from datetime import date, timedelta
 
 import streamlit as st
@@ -6,8 +6,9 @@ import streamlit as st
 from agent.travel_agent import plan_trip
 from utils import load_json
 
-st.set_page_config(page_title="AI Travel Planner", page_icon="✈️", layout="centered")
-
+st.set_page_config(page_title="Voyagent", page_icon="✈️", layout="centered")
+st.title("✈️ Voyagent")
+st.caption("Your AI travel agent: flights, hotel, weather and a day-wise itinerary.")
 
 @st.cache_data
 def get_options():
@@ -30,8 +31,6 @@ def build_query(source, destination, start, nights, budget, interests):
     return text
 
 
-st.title("✈️ AI Travel Planning Assistant")
-st.caption("Tell me where you want to go and I'll plan flights, hotel, weather and a day-wise itinerary.")
 
 cities, types_by_city = get_options()
 if not cities:
